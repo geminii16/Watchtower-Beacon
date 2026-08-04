@@ -9,7 +9,7 @@ body {
     color: #e8f1ff;
     font-family: Arial, sans-serif;
     text-align: center;
-    padding-top: 60px;
+    padding-top: 50px;
 }
 
 h1 {
@@ -79,6 +79,11 @@ ACTIVATE BEACON
 </button>
 
 <script>
+
+const targetLatitude = 34.1619503;
+const targetLongitude = -118.4434149;
+
+
 function activateBeacon() {
 
 document.getElementById("status").innerHTML =
@@ -87,7 +92,64 @@ document.getElementById("status").innerHTML =
 document.getElementById("message").innerHTML =
 "WATCHTOWER BEACON AWAKENED.<br><br>SEARCHING FOR COMMAND CENTRAL...";
 
+
+if (navigator.geolocation) {
+
+navigator.geolocation.getCurrentPosition(showLocation);
+
+} else {
+
+document.getElementById("message").innerHTML =
+"LOCATION SYSTEM UNAVAILABLE.";
+
 }
+
+}
+
+
+function showLocation(position) {
+
+let playerLatitude = position.coords.latitude;
+let playerLongitude = position.coords.longitude;
+
+
+let distance = calculateDistance(
+playerLatitude,
+playerLongitude,
+targetLatitude,
+targetLongitude
+);
+
+
+document.getElementById("message").innerHTML =
+"SIGNAL FOUND.<br><br>DISTANCE TO COMMAND CENTRAL: " +
+distance.toFixed(0) +
+" meters";
+
+}
+
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
+
+const earthRadius = 6371e3;
+
+const radians = Math.PI / 180;
+
+let a =
+Math.sin((lat2-lat1)*radians/2) *
+Math.sin((lat2-lat1)*radians/2) +
+Math.cos(lat1*radians) *
+Math.cos(lat2*radians) *
+Math.sin((lon2-lon1)*radians/2) *
+Math.sin((lon2-lon1)*radians/2);
+
+
+let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+return earthRadius * c;
+
+}
+
 </script>
 
 </body>
