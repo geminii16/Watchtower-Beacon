@@ -2,6 +2,58 @@
 <html>
 <head>
 <title>Watchtower Beacon</title>
+
+<style>
+body {
+    background-color: #0b1020;
+    color: #e8f1ff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 60px;
+}
+
+h1 {
+    font-size: 42px;
+    letter-spacing: 4px;
+}
+
+h2 {
+    color: #7dd3fc;
+    font-weight: normal;
+}
+
+.beacon {
+    margin: 40px auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid #7dd3fc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    box-shadow: 0 0 30px #7dd3fc;
+}
+
+.status {
+    font-size: 20px;
+    margin: 20px;
+}
+
+button {
+    background-color: #1e40af;
+    color: white;
+    border: 2px solid #7dd3fc;
+    padding: 15px 35px;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+</style>
+
 </head>
 
 <body>
@@ -10,13 +62,17 @@
 
 <h2>Explorer Archive System</h2>
 
-<p>
-SIGNAL STATUS: ONLINE
-</p>
+<div class="beacon">
+◈
+</div>
 
-<p>
-Authentication required.
-</p>
+<div class="status">
+SIGNAL STATUS: ONLINE
+</div>
+
+<div class="status">
+AUTHENTICATION: VERIFIED
+</div>
 
 <button>
 ACTIVATE BEACON
