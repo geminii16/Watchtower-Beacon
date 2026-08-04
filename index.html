@@ -66,17 +66,29 @@ button:hover {
 ◈
 </div>
 
-<div class="status">
+<div class="status" id="status">
 SIGNAL STATUS: ONLINE
 </div>
 
-<div class="status">
+<div class="status" id="message">
 AUTHENTICATION: VERIFIED
 </div>
 
-<button>
+<button onclick="activateBeacon()">
 ACTIVATE BEACON
 </button>
+
+<script>
+function activateBeacon() {
+
+document.getElementById("status").innerHTML =
+"EXPLORER SIGNAL RECOGNIZED.";
+
+document.getElementById("message").innerHTML =
+"WATCHTOWER BEACON AWAKENED.<br><br>SEARCHING FOR COMMAND CENTRAL...";
+
+}
+</script>
 
 </body>
 </html>
