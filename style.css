@@ -305,22 +305,7 @@ button:active {
     0 0 8px #38bdf8;
 
 }
-.artifact-core {
-left: 50%;
-top: 50%;
-transform: translate(-50%, -50%);
-    position: absolute;
 
-    width: 14px;
-    height: 14px;
-
-    border-radius: 50%;
-
-    background: #e0f7ff;
-
-    box-shadow:
-    0 0 12px #38bdf8,
-    0 0 30px #38bdf8;
 
 }
 .artifact-ring::before {
