@@ -112,18 +112,18 @@ else if(activeDistance > 30){
     " ft";
 
 
-    if(surfaceDistance < 100){
+  if(surfaceDistance < 100 && distance > 50){
 
     document.getElementById("status").innerHTML =
-    "WATCHTOWER SIGNAL FOUND";
+    "SURFACE SIGNAL DETECTED";
 
 
     document.getElementById("message").innerHTML =
-    "Surface location confirmed.<br><br>" +
-    "Vertical signal detected.<br>" +
-    "Activate ancient navigation.";
+    "The Watchtower signal is near.<br><br>" +
+    "The path continues upward.<br>" +
+    "Find the way to the higher level.";
 
-    
+
     document.getElementById("compass").innerHTML =
     "◈<br>⬆";
 
@@ -133,6 +133,32 @@ else if(activeDistance > 30){
         navigator.vibrate([200,100,300]);
 
     }
+
+}
+
+
+if(distance < 50){
+
+    document.getElementById("status").innerHTML =
+    "WATCHTOWER SIGNAL FOUND";
+
+
+    document.getElementById("message").innerHTML =
+    "The ancient signal has been located.<br><br>" +
+    "The Watchtower has been discovered.<br>" +
+    "Mission complete, Agents.";
+
+
+    document.getElementById("compass").innerHTML =
+    "◈<br>★";
+
+
+    if(navigator.vibrate){
+
+        navigator.vibrate([300,100,500]);
+
+    }
+
 }
     }
 
