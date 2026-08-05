@@ -53,6 +53,7 @@ function startTracking(position) {
 
 
 
+
 function updateDistance(position) {
 
 
@@ -127,14 +128,60 @@ function updateDistance(position) {
     "SIGNAL STRENGTH<br>" +
     bars +
     "<br><br>" +
-    Math.round(distance) +
+    Math.round(activeDistance) +
     " ft";
 
 
 
 
 
-    // SURFACE SIGNAL - elevator/escalator area
+    // CONTINUOUS BEACON HAPTIC SIGNAL
+
+    if(activeDistance > 300){
+
+        if(navigator.vibrate){
+
+            navigator.vibrate([100]);
+
+        }
+
+    }
+
+    else if(activeDistance > 100){
+
+        if(navigator.vibrate){
+
+            navigator.vibrate([200,200,200]);
+
+        }
+
+    }
+
+    else if(activeDistance > 30){
+
+        if(navigator.vibrate){
+
+            navigator.vibrate([300,100,300]);
+
+        }
+
+    }
+
+    else {
+
+        if(navigator.vibrate){
+
+            navigator.vibrate([500,100,500]);
+
+        }
+
+    }
+
+
+
+
+
+    // SURFACE SIGNAL - elevator/escalator
 
     if(surfaceDistance < 100 && !surfaceTriggered && distance > 50){
 
@@ -155,16 +202,7 @@ function updateDistance(position) {
         document.getElementById("compass").innerHTML =
         "◈<br>⬆";
 
-
-
-        if(navigator.vibrate){
-
-            navigator.vibrate([200,100,300]);
-
-        }
-
     }
-
 
 
 
@@ -191,18 +229,11 @@ function updateDistance(position) {
         document.getElementById("compass").innerHTML =
         "◈<br>★";
 
-
-
-        if(navigator.vibrate){
-
-            navigator.vibrate([300,100,500]);
-
-        }
-
     }
 
 
 }
+
 
 
 
@@ -266,6 +297,7 @@ function gpsError(){
 
 
 
+
 function confirmWatchtower(){
 
 
@@ -291,12 +323,5 @@ function confirmWatchtower(){
     document.getElementById("compass").innerHTML =
     "◈";
 
-
-
-    if(navigator.vibrate){
-
-        navigator.vibrate([300,100,300,100,500]);
-
-    }
 
 }
