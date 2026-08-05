@@ -4,6 +4,8 @@ const surfaceLon = -118.3525901;
 const targetLat = 34.1362667;
 const targetLon = -118.3523846;
 
+let surfaceTriggered = false;
+let watchtowerTriggered = false;
 
 function activateBeacon() {
 
@@ -112,16 +114,18 @@ else if(activeDistance > 30){
     " ft";
 
 
-  if(surfaceDistance < 100 && distance > 50){
+ if(surfaceDistance < 100 && !surfaceTriggered && distance > 50){
+
+    surfaceTriggered = true;
 
     document.getElementById("status").innerHTML =
     "SURFACE SIGNAL DETECTED";
 
 
     document.getElementById("message").innerHTML =
-    "The Watchtower signal is near.<br><br>" +
-    "The path continues upward.<br>" +
-    "Find the way to the higher level.";
+    "The Watchtower signal is close.<br><br>" +
+    "The path does not end here.<br>" +
+    "Continue upward to reach the hidden tower.";
 
 
     document.getElementById("compass").innerHTML =
@@ -133,6 +137,35 @@ else if(activeDistance > 30){
         navigator.vibrate([200,100,300]);
 
     }
+
+}
+
+
+if(distance < 50 && !watchtowerTriggered){
+
+    watchtowerTriggered = true;
+
+    document.getElementById("status").innerHTML =
+    "WATCHTOWER DISCOVERED";
+
+
+    document.getElementById("message").innerHTML =
+    "The ancient signal has been restored.<br><br>" +
+    "You found the Watchtower.<br>" +
+    "Mission complete, Agents.";
+
+
+    document.getElementById("compass").innerHTML =
+    "◈<br>★";
+
+
+    if(navigator.vibrate){
+
+        navigator.vibrate([300,100,500]);
+
+    }
+
+}
 
 }
 
