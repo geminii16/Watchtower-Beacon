@@ -331,3 +331,20 @@ button:active {
     0 0 8px #38bdf8;
 
 }
+.progress {
+
+    width: 80%;
+    max-width: 350px;
+
+    margin: 20px auto;
+
+    font-size: 22px;
+
+    letter-spacing: 4px;
+
+    color: #7dd3fc;
+
+    text-shadow:
+    0 0 10px #38bdf8;
+
+}
