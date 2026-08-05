@@ -327,3 +327,26 @@ button:active {
     0 0 30px #38bdf8;
 
 }
+.artifact-ring::before {
+
+    content: "·  ◇  ·  ◈  ·  ◇  ·";
+
+    position: absolute;
+
+    width: 100%;
+    text-align: center;
+
+    top: -18px;
+
+    color: #7dd3fc;
+
+    font-size: 10px;
+
+    letter-spacing: 8px;
+
+    opacity: .8;
+
+    text-shadow:
+    0 0 8px #38bdf8;
+
+}
