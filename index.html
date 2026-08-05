@@ -1,233 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Watchtower Beacon</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-
-body {
-    background-color: #0b1020;
-    color: #e8f1ff;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 30px 20px;
-    min-height: 100vh;
-}
-
-h1 {
-    font-size: 38px;
-    letter-spacing: 3px;
-    line-height: 1.2;
-}
-
-h2 {
-    color: #7dd3fc;
-    font-size: 22px;
-    font-weight: normal;
-}
-
-.beacon {
-    margin: 35px auto;
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    border: 5px solid #7dd3fc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 90px;
-    box-shadow: 0 0 40px #7dd3fc;
-}
-
-.status {
-    font-size: 24px;
-    margin: 20px;
-}
-
-.message {
-    font-size: 22px;
-    line-height: 1.6;
-}
-
-.arrow {
-    font-size: 80px;
-    margin: 20px;
-    color: #7dd3fc;
-}
-
-button {
-    margin-top: 30px;
-    background-color: #1e40af;
-    color: white;
-    border: 3px solid #7dd3fc;
-    padding: 22px;
-    font-size: 24px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 350px;
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
-
 <body>
 
-<h1>◈ WATCHTOWER<br>BEACON ◈</h1>
+<h1>◈ WATCHTOWER BEACON ◈</h1>
 
-<h2>Explorer Archive System</h2>
+<div id="beacon" class="beacon">
 
-
-<div class="beacon">
 ◈
+
 </div>
 
+<div id="status" class="status">
 
-<div class="status" id="status">
-SIGNAL STATUS: ONLINE
+READY
+
 </div>
 
+<div id="message" class="message">
 
-<div class="message" id="message">
-AUTHENTICATION: VERIFIED
 </div>
 
+<div id="arrow" class="arrow">
 
-<div class="arrow" id="arrow">
 ◈
-</div>
 
+</div>
 
 <button onclick="activateBeacon()">
+
 ACTIVATE BEACON
+
 </button>
 
-
-
-<script>
-
-const targetLatitude = 34.1603303;
-const targetLongitude = -118.4494499;
-
-
-function activateBeacon(){
-
-document.getElementById("status").innerHTML =
-"EXPLORER SIGNAL RECOGNIZED.";
-
-document.getElementById("message").innerHTML =
-"WATCHTOWER BEACON AWAKENED.<br><br>SEARCHING FOR COMMAND CENTRAL...";
-
-
-navigator.geolocation.getCurrentPosition(showLocation);
-
-}
-
-
-
-function showLocation(position){
-
-let lat = position.coords.latitude;
-let lon = position.coords.longitude;
-
-
-let distance = calculateDistance(
-lat,
-lon,
-targetLatitude,
-targetLongitude
-);
-
-
-let bearing = calculateBearing(
-lat,
-lon,
-targetLatitude,
-targetLongitude
-);
-
-
-let direction = getDirection(bearing);
-
-
-document.getElementById("message").innerHTML =
-"SIGNAL FOUND.<br><br>" +
-"DISTANCE: " + distance.toFixed(0) + " meters<br>" +
-"DIRECTION: " + direction;
-
-
-document.getElementById("arrow").innerHTML = "↑";
-
-}
-
-
-
-function calculateDistance(lat1,lon1,lat2,lon2){
-
-const R = 6371000;
-
-const p1 = lat1 * Math.PI/180;
-const p2 = lat2 * Math.PI/180;
-
-const dLat = (lat2-lat1)*Math.PI/180;
-const dLon = (lon2-lon1)*Math.PI/180;
-
-
-let a =
-Math.sin(dLat/2)*Math.sin(dLat/2)+
-Math.cos(p1)*Math.cos(p2)*
-Math.sin(dLon/2)*Math.sin(dLon/2);
-
-
-return R * 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
-
-}
-
-
-
-function calculateBearing(lat1,lon1,lat2,lon2){
-
-let y = Math.sin((lon2-lon1)*Math.PI/180) *
-Math.cos(lat2*Math.PI/180);
-
-let x =
-Math.cos(lat1*Math.PI/180)*
-Math.sin(lat2*Math.PI/180)
--
-Math.sin(lat1*Math.PI/180)*
-Math.cos(lat2*Math.PI/180)*
-Math.cos((lon2-lon1)*Math.PI/180);
-
-
-let bearing = Math.atan2(y,x)*180/Math.PI;
-
-return (bearing+360)%360;
-
-}
-
-
-
-function getDirection(degrees){
-
-if(degrees < 22.5 || degrees >=337.5) return "NORTH";
-if(degrees <67.5) return "NORTHEAST";
-if(degrees <112.5) return "EAST";
-if(degrees <157.5) return "SOUTHEAST";
-if(degrees <202.5) return "SOUTH";
-if(degrees <247.5) return "SOUTHWEST";
-if(degrees <292.5) return "WEST";
-
-return "NORTHWEST";
-
-}
-
-
-</script>
+<script src="script.js"></script>
 
 </body>
+
 </html>
