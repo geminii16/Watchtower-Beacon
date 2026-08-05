@@ -4,8 +4,10 @@ const surfaceLon = -118.3525901;
 const targetLat = 34.1362667;
 const targetLon = -118.3523846;
 
+
 let surfaceTriggered = false;
 let watchtowerTriggered = false;
+
 
 
 function activateBeacon() {
@@ -13,18 +15,28 @@ function activateBeacon() {
     const status = document.getElementById("status");
     const message = document.getElementById("message");
 
-    status.innerHTML = "AWAKENING";
+
+    status.innerHTML = "BEACON ACTIVATED";
+
 
     message.innerHTML =
-    "Restoring ancient signal...";
+    "Watchtower signal restored.<br><br>" +
+    "Begin your search, Agents.";
 
 
     navigator.geolocation.getCurrentPosition(
         startTracking,
-        gpsError
+        gpsError,
+        {
+            enableHighAccuracy: true,
+            maximumAge: 0,
+            timeout: 10000
+        }
     );
 
 }
+
+
 
 
 
@@ -46,10 +58,17 @@ function startTracking(position) {
 
 
     navigator.geolocation.watchPosition(
-        updateDistance
+        updateDistance,
+        gpsError,
+        {
+            enableHighAccuracy: true,
+            maximumAge: 0,
+            timeout: 10000
+        }
     );
 
 }
+
 
 
 
@@ -79,11 +98,6 @@ function updateDistance(position) {
 
 
 
-    const distanceBox =
-    document.getElementById("distance");
-
-
-
     let activeDistance = distance;
 
 
@@ -95,7 +109,13 @@ function updateDistance(position) {
 
 
 
+    const distanceBox =
+    document.getElementById("distance");
+
+
+
     let bars = "";
+
 
 
     if(activeDistance > 300){
@@ -135,7 +155,9 @@ function updateDistance(position) {
 
 
 
-    // CONTINUOUS BEACON HAPTIC SIGNAL
+
+
+    // CONTINUOUS BEACON HAPTIC
 
     if(activeDistance > 300){
 
@@ -181,7 +203,10 @@ function updateDistance(position) {
 
 
 
-    // SURFACE SIGNAL - elevator/escalator
+
+
+
+    // SURFACE SIGNAL - GOLD HYDRANT / ELEVATOR
 
     if(surfaceDistance < 100 && !surfaceTriggered && distance > 50){
 
@@ -202,7 +227,10 @@ function updateDistance(position) {
         document.getElementById("compass").innerHTML =
         "◈<br>⬆";
 
+
     }
+
+
 
 
 
@@ -229,10 +257,12 @@ function updateDistance(position) {
         document.getElementById("compass").innerHTML =
         "◈<br>★";
 
+
     }
 
 
 }
+
 
 
 
@@ -284,6 +314,7 @@ function calculateDistance(lat1, lon1, lat2, lon2){
 
 
 
+
 function gpsError(){
 
 
@@ -292,6 +323,7 @@ function gpsError(){
     "Location access required.";
 
 }
+
 
 
 
@@ -317,7 +349,6 @@ function confirmWatchtower(){
     message.innerHTML =
     "Transmission complete.<br><br>" +
     "The Watchtower has awakened.";
-
 
 
     document.getElementById("compass").innerHTML =
