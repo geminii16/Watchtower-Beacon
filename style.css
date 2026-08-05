@@ -362,3 +362,16 @@ button:active {
     0 0 10px #38bdf8;
 
 }
+.compass {
+
+    margin: 30px auto;
+
+    font-size: 70px;
+
+    color: #7dd3fc;
+
+    text-shadow:
+    0 0 15px #38bdf8,
+    0 0 30px #38bdf8;
+
+}
