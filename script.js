@@ -1,3 +1,6 @@
+const surfaceLat = 34.1364166;
+const surfaceLon = -118.3525901;
+
 const targetLat = 34.1362667;
 const targetLon = -118.3523846;
 
@@ -50,7 +53,14 @@ function updateDistance(position) {
     const userLon = position.coords.longitude;
 
 
-    const distance = calculateDistance(
+    const surfaceDistance = calculateDistance(
+        userLat,
+        userLon,
+        surfaceLat,
+        surfaceLon
+    );
+
+const distance = calculateDistance(
         userLat,
         userLon,
         targetLat,
@@ -62,22 +72,26 @@ function updateDistance(position) {
     document.getElementById("distance");
 
 
-    let bars = "";
+  let bars = "";
+
+let activeDistance = surfaceDistance > 100 
+    ? surfaceDistance 
+    : distance;
 
 
-    if(distance > 300){
+if(activeDistance > 300){
 
-        bars = "▮□□□□";
+    bars = "▮□□□□";
 
-    }
+}
 
-    else if(distance > 100){
+else if(activeDistance > 100){
 
-        bars = "▮▮▮□□";
+    bars = "▮▮▮□□";
 
-    }
+}
 
-    else if(distance > 30){
+else if(activeDistance > 30){
 
         bars = "▮▮▮▮□";
 
