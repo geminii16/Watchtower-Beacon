@@ -145,3 +145,20 @@ button:active {
     0 0 25px #38bdf8;
 
 }
+.signal {
+
+    position: absolute;
+
+    width: 90px;
+    height: 4px;
+
+    background: #7dd3fc;
+
+    left: 0;
+    top: 43px;
+
+    box-shadow:
+    0 0 12px #38bdf8,
+    0 0 25px #38bdf8;
+
+}
