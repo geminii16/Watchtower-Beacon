@@ -375,3 +375,45 @@ button:active {
     0 0 30px #38bdf8;
 
 }
+.compass {
+
+    margin: 30px auto;
+
+    width: 140px;
+    height: 140px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 90px;
+
+    color: #7dd3fc;
+
+    text-shadow:
+    0 0 15px #38bdf8,
+    0 0 35px #38bdf8;
+
+    transition: transform 0.5s ease;
+
+}
+
+
+.compass-arrow {
+
+    display:block;
+
+    transform-origin:center;
+
+    filter:
+    drop-shadow(0 0 10px #38bdf8)
+    drop-shadow(0 0 25px #38bdf8);
+
+}
+
+
+#confirmButton {
+
+    margin-top:20px;
+
+}
