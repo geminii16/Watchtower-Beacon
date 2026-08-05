@@ -112,9 +112,7 @@ else if(activeDistance > 30){
     " ft";
 
 
-    if(distance < 30){
-
-       if(distance < 75){
+    if(surfaceDistance < 100){
 
     document.getElementById("status").innerHTML =
     "WATCHTOWER SIGNAL FOUND";
@@ -134,6 +132,8 @@ else if(activeDistance > 30){
 
         navigator.vibrate([200,100,300]);
 
+    }
+}
     }
 
 }
