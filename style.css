@@ -255,8 +255,8 @@ button:active {
 
     position: absolute;
 
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
 
 }
 
@@ -267,20 +267,20 @@ button:active {
 
     position: absolute;
 
-    width: 45px;
-    height: 45px;
+    left: 8px;
+    top: 8px;
 
-    border-left: 4px solid #7dd3fc;
-    border-right: 4px solid #7dd3fc;
+    width: 44px;
+    height: 44px;
 
-    transform: rotate(45deg);
+    border-left: 5px solid #7dd3fc;
+    border-right: 5px solid #7dd3fc;
 
-    left: 3px;
-    top: 5px;
+    transform: skew(-10deg);
 
     box-shadow:
-    0 0 10px #38bdf8,
-    0 0 25px #38bdf8;
+    0 0 8px #38bdf8,
+    0 0 18px #38bdf8;
 
 }
 
@@ -291,26 +291,20 @@ button:active {
 
     position: absolute;
 
-    width: 35px;
-    height: 35px;
+    left: 18px;
+    top: 20px;
 
-    border-bottom: 4px solid #7dd3fc;
+    width: 25px;
+    height: 25px;
 
-    left: 10px;
-    top: 10px;
+    border-bottom: 5px solid #7dd3fc;
 
     transform: rotate(45deg);
 
     box-shadow:
-    0 0 10px #38bdf8;
+    0 0 8px #38bdf8;
 
 }
-
-}
-
-
-
-
 .artifact-core {
 
     position: absolute;
