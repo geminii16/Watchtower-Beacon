@@ -1,5 +1,5 @@
-const targetLat = 34.136598;
-const targetLon = -118.352926;
+const targetLat = 34.1362667;
+const targetLon = -118.3523846;
 
 
 function activateBeacon() {
