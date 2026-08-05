@@ -141,31 +141,7 @@ else if(activeDistance > 30){
 }
 
 
-if(distance < 50 && !watchtowerTriggered){
 
-    watchtowerTriggered = true;
-
-    document.getElementById("status").innerHTML =
-    "WATCHTOWER DISCOVERED";
-
-
-    document.getElementById("message").innerHTML =
-    "The ancient signal has been restored.<br><br>" +
-    "You found the Watchtower.<br>" +
-    "Mission complete, Agents.";
-
-
-    document.getElementById("compass").innerHTML =
-    "◈<br>★";
-
-
-    if(navigator.vibrate){
-
-        navigator.vibrate([300,100,500]);
-
-    }
-
-}
 
 }
 
