@@ -7,6 +7,7 @@ const targetLon = -118.3523846;
 let surfaceTriggered = false;
 let watchtowerTriggered = false;
 
+
 function activateBeacon() {
 
     const status = document.getElementById("status");
@@ -17,15 +18,14 @@ function activateBeacon() {
     message.innerHTML =
     "Restoring ancient signal...";
 
+
     navigator.geolocation.getCurrentPosition(
-
         startTracking,
-
         gpsError
-
     );
 
 }
+
 
 
 function startTracking(position) {
@@ -33,26 +33,32 @@ function startTracking(position) {
     const status = document.getElementById("status");
     const message = document.getElementById("message");
 
-    status.innerHTML = "WATCHTOWER SEARCH ACTIVE";
+
+    status.innerHTML =
+    "WATCHTOWER SEARCH ACTIVE";
+
 
     message.innerHTML =
     "Searching for Watchtower signal...";
 
+
     updateDistance(position);
 
+
     navigator.geolocation.watchPosition(
-
         updateDistance
-
     );
 
 }
 
 
+
 function updateDistance(position) {
+
 
     const userLat = position.coords.latitude;
     const userLon = position.coords.longitude;
+
 
 
     const surfaceDistance = calculateDistance(
@@ -62,7 +68,8 @@ function updateDistance(position) {
         surfaceLon
     );
 
-const distance = calculateDistance(
+
+    const distance = calculateDistance(
         userLat,
         userLon,
         targetLat,
@@ -70,30 +77,39 @@ const distance = calculateDistance(
     );
 
 
+
     const distanceBox =
     document.getElementById("distance");
 
 
-  let bars = "";
 
-let activeDistance = surfaceDistance > 100 
-    ? surfaceDistance 
-    : distance;
+    let activeDistance = distance;
 
 
-if(activeDistance > 300){
+    if(surfaceDistance < 300){
 
-    bars = "▮□□□□";
+        activeDistance = surfaceDistance;
 
-}
+    }
 
-else if(activeDistance > 100){
 
-    bars = "▮▮▮□□";
 
-}
+    let bars = "";
 
-else if(activeDistance > 30){
+
+    if(activeDistance > 300){
+
+        bars = "▮□□□□";
+
+    }
+
+    else if(activeDistance > 100){
+
+        bars = "▮▮▮□□";
+
+    }
+
+    else if(activeDistance > 30){
 
         bars = "▮▮▮▮□";
 
@@ -106,6 +122,7 @@ else if(activeDistance > 30){
     }
 
 
+
     distanceBox.innerHTML =
     "SIGNAL STRENGTH<br>" +
     bars +
@@ -114,81 +131,98 @@ else if(activeDistance > 30){
     " ft";
 
 
- if(surfaceDistance < 100 && !surfaceTriggered && distance > 50){
-
-    surfaceTriggered = true;
-
-    document.getElementById("status").innerHTML =
-    "SURFACE SIGNAL DETECTED";
-
-
-    document.getElementById("message").innerHTML =
-    "The Watchtower signal is close.<br><br>" +
-    "The path does not end here.<br>" +
-    "Continue upward to reach the hidden tower.";
-
-
-    document.getElementById("compass").innerHTML =
-    "◈<br>⬆";
-
-
-    if(navigator.vibrate){
-
-        navigator.vibrate([200,100,300]);
-
-    }
-
-}
 
 
 
+    // SURFACE SIGNAL - elevator/escalator area
 
-}
-
-
-if(distance < 50){
-
-    document.getElementById("status").innerHTML =
-    "WATCHTOWER SIGNAL FOUND";
+    if(surfaceDistance < 100 && !surfaceTriggered && distance > 50){
 
 
-    document.getElementById("message").innerHTML =
-    "The ancient signal has been located.<br><br>" +
-    "The Watchtower has been discovered.<br>" +
-    "Mission complete, Agents.";
+        surfaceTriggered = true;
 
 
-    document.getElementById("compass").innerHTML =
-    "◈<br>★";
+        document.getElementById("status").innerHTML =
+        "SURFACE SIGNAL DETECTED";
 
 
-    if(navigator.vibrate){
+        document.getElementById("message").innerHTML =
+        "The Watchtower signal is close.<br><br>" +
+        "The path does not end here.<br>" +
+        "Continue upward to reach the hidden tower.";
 
-        navigator.vibrate([300,100,500]);
+
+        document.getElementById("compass").innerHTML =
+        "◈<br>⬆";
+
+
+
+        if(navigator.vibrate){
+
+            navigator.vibrate([200,100,300]);
+
+        }
 
     }
 
-}
+
+
+
+
+
+    // FINAL WATCHTOWER SIGNAL
+
+    if(distance < 50 && !watchtowerTriggered){
+
+
+        watchtowerTriggered = true;
+
+
+        document.getElementById("status").innerHTML =
+        "WATCHTOWER DISCOVERED";
+
+
+        document.getElementById("message").innerHTML =
+        "The ancient signal has been restored.<br><br>" +
+        "You found the Watchtower.<br>" +
+        "Mission complete, Agents.";
+
+
+        document.getElementById("compass").innerHTML =
+        "◈<br>★";
+
+
+
+        if(navigator.vibrate){
+
+            navigator.vibrate([300,100,500]);
+
+        }
+
     }
 
-}
-
-    }
 
 }
+
+
+
 
 
 function calculateDistance(lat1, lon1, lat2, lon2){
 
+
     const R = 20902231;
+
 
     const dLat =
     (lat2-lat1) *
     Math.PI / 180;
 
+
     const dLon =
     (lon2-lon1) *
     Math.PI / 180;
+
 
 
     const a =
@@ -200,6 +234,7 @@ function calculateDistance(lat1, lon1, lat2, lon2){
 
     Math.sin(dLon/2) *
     Math.sin(dLon/2);
+
 
 
     const c =
@@ -215,20 +250,32 @@ function calculateDistance(lat1, lon1, lat2, lon2){
 }
 
 
+
+
+
 function gpsError(){
+
 
     document.getElementById("message").innerHTML =
     "Signal unavailable.<br>" +
     "Location access required.";
 
 }
+
+
+
+
+
 function confirmWatchtower(){
+
 
     const status =
     document.getElementById("status");
 
+
     const message =
     document.getElementById("message");
+
 
 
     status.innerHTML =
@@ -240,8 +287,10 @@ function confirmWatchtower(){
     "The Watchtower has awakened.";
 
 
+
     document.getElementById("compass").innerHTML =
     "◈";
+
 
 
     if(navigator.vibrate){
