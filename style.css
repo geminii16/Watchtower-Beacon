@@ -1,1 +1,104 @@
+body {
 
+    background-color: #050914;
+    color: #e8f1ff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 35px 20px;
+    min-height: 100vh;
+
+}
+
+
+h1 {
+
+    font-size: 38px;
+    letter-spacing: 4px;
+    line-height: 1.3;
+    margin-top: 20px;
+
+}
+
+
+.beacon {
+
+    margin: 45px auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+
+    border: 5px solid #38bdf8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 95px;
+
+    color: #7dd3fc;
+
+    box-shadow:
+    0 0 20px #38bdf8,
+    0 0 50px #38bdf8;
+
+}
+
+
+.status {
+
+    font-size: 28px;
+    letter-spacing: 3px;
+    margin-top: 20px;
+
+}
+
+
+.message {
+
+    font-size: 22px;
+    line-height: 1.6;
+    margin: 25px auto;
+
+}
+
+
+.arrow {
+
+    font-size: 80px;
+    color: #7dd3fc;
+    margin: 20px;
+
+}
+
+
+button {
+
+    margin-top: 30px;
+
+    width: 90%;
+    max-width: 360px;
+
+    padding: 22px;
+
+    font-size: 24px;
+
+    border-radius: 15px;
+
+    background-color: #1e40af;
+
+    color: white;
+
+    border: 3px solid #7dd3fc;
+
+    box-shadow:
+    0 0 15px #38bdf8;
+
+}
+
+
+button:active {
+
+    transform: scale(.96);
+
+}
