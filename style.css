@@ -102,3 +102,29 @@ button:active {
     transform: scale(.96);
 
 }
+.glyph {
+    position: relative;
+    width: 90px;
+    height: 90px;
+}
+
+
+.core {
+
+    position: absolute;
+
+    width: 28px;
+    height: 28px;
+
+    background: #7dd3fc;
+
+    border-radius: 50%;
+
+    top: 31px;
+    left: 31px;
+
+    box-shadow:
+    0 0 15px #38bdf8,
+    0 0 35px #38bdf8;
+
+}
