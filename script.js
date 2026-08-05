@@ -31,9 +31,9 @@ function activateBeacon() {
             status.innerHTML = "WATCHTOWER ONLINE";
 
             message.innerHTML =
-            "Explorer transmission detected.<br><br>" +
-            "Five memory fragments remain hidden.<br>" +
-            "Recover them all to unlock the final sequence.";
+            "All five transmissions recovered.<br><br>" +
+"The Watchtower signal has been restored.<br>" +
+"Final sequence unlocked.";
 
         }
 
