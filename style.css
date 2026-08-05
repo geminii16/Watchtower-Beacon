@@ -256,33 +256,55 @@ button:active {
     position: absolute;
 
     width: 55px;
-    height: 45px;
-
-    border: none;
+    height: 55px;
 
 }
 
 
 .artifact-symbol::before {
 
-    content: "⌁";
+    content: "";
 
     position: absolute;
 
-    font-size: 75px;
+    width: 45px;
+    height: 45px;
 
-    font-family: serif;
+    border-left: 4px solid #7dd3fc;
+    border-right: 4px solid #7dd3fc;
 
-    color: #7dd3fc;
+    transform: rotate(45deg);
 
-    transform: scaleX(1.2);
+    left: 3px;
+    top: 5px;
 
-    top: -25px;
-    left: -2px;
-
-    text-shadow:
+    box-shadow:
     0 0 10px #38bdf8,
     0 0 25px #38bdf8;
+
+}
+
+
+.artifact-symbol::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 35px;
+    height: 35px;
+
+    border-bottom: 4px solid #7dd3fc;
+
+    left: 10px;
+    top: 10px;
+
+    transform: rotate(45deg);
+
+    box-shadow:
+    0 0 10px #38bdf8;
+
+}
 
 }
 
