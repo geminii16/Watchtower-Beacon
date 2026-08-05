@@ -173,3 +173,32 @@ function gpsError(){
     "Location access required.";
 
 }
+function confirmWatchtower(){
+
+    const status =
+    document.getElementById("status");
+
+    const message =
+    document.getElementById("message");
+
+
+    status.innerHTML =
+    "WATCHTOWER LOCATED";
+
+
+    message.innerHTML =
+    "Transmission complete.<br><br>" +
+    "The Watchtower has awakened.";
+
+
+    document.getElementById("compass").innerHTML =
+    "◈";
+
+
+    if(navigator.vibrate){
+
+        navigator.vibrate([300,100,300,100,500]);
+
+    }
+
+}
