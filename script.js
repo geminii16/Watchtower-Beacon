@@ -100,12 +100,29 @@ function updateDistance(position) {
 
     if(distance < 30){
 
-        document.getElementById("status").innerHTML =
-        "WATCHTOWER SIGNAL FOUND";
+       if(distance < 75){
 
-        document.getElementById("message").innerHTML =
-        "Vertical signal detected.<br>" +
-        "Begin final ascent.";
+    document.getElementById("status").innerHTML =
+    "WATCHTOWER SIGNAL FOUND";
+
+
+    document.getElementById("message").innerHTML =
+    "Surface location confirmed.<br><br>" +
+    "Vertical signal detected.<br>" +
+    "Activate ancient navigation.";
+
+    
+    document.getElementById("compass").innerHTML =
+    "◈<br>⬆";
+
+
+    if(navigator.vibrate){
+
+        navigator.vibrate([200,100,300]);
+
+    }
+
+}
 
     }
 
